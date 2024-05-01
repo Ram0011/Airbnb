@@ -23,7 +23,7 @@ const jwtSecret = "thisisrandomstring";
 app.use(
     cors({
         credentials: true,
-        origin: "https://airbnb-7n5y.onrender.com",
+        origin: "https://airbnb-eight-psi.vercel.app",
     })
 );
 app.use("/uploads", express.static(__dirname + "/uploads"));
