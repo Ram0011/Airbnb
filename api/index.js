@@ -23,9 +23,13 @@ const jwtSecret = "thisisrandomstring";
 app.use(
     cors({
         credentials: true,
-        origin: "https://airbnb-eight-psi.vercel.app",
+        origin: [
+            "https://airbnb-eight-psi.vercel.app",
+            "https://fake-airbnb-by-ram.netlify.app",
+        ],
     })
 );
+
 app.use("/uploads", express.static(__dirname + "/uploads"));
 app.use(express.json());
 app.use(cookieParser());
