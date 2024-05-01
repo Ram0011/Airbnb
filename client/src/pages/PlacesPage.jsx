@@ -9,9 +9,11 @@ export default function PlacesPage() {
     const [places, setPlaces] = useState([]);
 
     useEffect(() => {
-        axios.get("http://localhost:4000/user-places").then(({ data }) => {
-            setPlaces(data);
-        });
+        axios
+            .get("https://airbnb-7n5y.onrender.com/user-places")
+            .then(({ data }) => {
+                setPlaces(data);
+            });
     }, []);
 
     return (
@@ -51,7 +53,7 @@ export default function PlacesPage() {
                                 {place.photos.length > 0 && (
                                     <img
                                         className="w-full h-full object-cover rounded-xl"
-                                        src={`http://localhost:4000/uploads/${place.photos[0]}`}
+                                        src={`https://airbnb-7n5y.onrender.com/uploads/${place.photos[0]}`}
                                         alt="photo"
                                     />
                                 )}

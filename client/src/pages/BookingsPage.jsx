@@ -8,9 +8,11 @@ export default function BookingsPage() {
     const [bookings, setBookings] = useState([]);
 
     useEffect(() => {
-        axios.get("http://localhost:4000/bookings").then((response) => {
-            setBookings(response.data);
-        });
+        axios
+            .get("https://airbnb-7n5y.onrender.com/bookings")
+            .then((response) => {
+                setBookings(response.data);
+            });
     }, []);
 
     return (
@@ -27,7 +29,7 @@ export default function BookingsPage() {
                             >
                                 <div className="w-48 ">
                                     <img
-                                        src={`http://localhost:4000/uploads/${booking.place.photos[0]}`}
+                                        src={`https://airbnb-7n5y.onrender.com/uploads/${booking.place.photos[0]}`}
                                         alt="photo0"
                                     />
                                 </div>

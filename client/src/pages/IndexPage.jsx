@@ -6,10 +6,12 @@ export default function IndexPage() {
     const [places, setPlaces] = useState([]);
 
     useEffect(() => {
-        axios.get("http://localhost:4000/places").then((response) => {
-            setPlaces(response.data);
-            // console.log(response.data);
-        });
+        axios
+            .get("https://airbnb-7n5y.onrender.com/places")
+            .then((response) => {
+                setPlaces(response.data);
+                // console.log(response.data);
+            });
     }, []);
 
     return (
@@ -25,7 +27,7 @@ export default function IndexPage() {
                             {place.photos?.[0] && (
                                 <img
                                     className="aspect-square rounded-2xl object-cover h-full w-full"
-                                    src={`http://localhost:4000/uploads/${place.photos[0]}`}
+                                    src={`https://airbnb-7n5y.onrender.com/uploads/${place.photos[0]}`}
                                     alt="photo"
                                 />
                             )}

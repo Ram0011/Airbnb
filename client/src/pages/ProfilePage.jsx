@@ -15,7 +15,7 @@ export default function ProfilePage() {
     }
 
     async function logout() {
-        await axios.post("http://localhost:4000/logout");
+        await axios.post("https://airbnb-7n5y.onrender.com/logout");
         alert("Logout Successful!");
         setRedirect("/");
         window.location.reload();

@@ -12,10 +12,13 @@ export default function LoginPage() {
     const handleLoginSubmit = async (e) => {
         e.preventDefault();
         try {
-            const userInfo = await axios.post("http://localhost:4000/login", {
-                email,
-                password,
-            });
+            const userInfo = await axios.post(
+                "https://airbnb-7n5y.onrender.com/login",
+                {
+                    email,
+                    password,
+                }
+            );
             setUser(userInfo.data);
 
             if (userInfo.status == 200) {

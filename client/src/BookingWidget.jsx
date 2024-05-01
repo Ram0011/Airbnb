@@ -49,7 +49,7 @@ export default function BookingWidget({ place }) {
                 price: numberOfNights * place.price,
             };
             const response = await axios.post(
-                "http://localhost:4000/bookings",
+                "https://airbnb-7n5y.onrender.com/bookings",
                 data
             );
             const bookingId = response.data._id;

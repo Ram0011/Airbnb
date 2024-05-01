@@ -12,7 +12,7 @@ export function UserContextProvider({ children }) {
         const fun = async () => {
             if (!user) {
                 const { data } = await axios.get(
-                    "http://localhost:4000/profile"
+                    "https://airbnb-7n5y.onrender.com/profile"
                 );
                 setUser(data);
                 setReady(true);

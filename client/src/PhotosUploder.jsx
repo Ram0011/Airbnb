@@ -9,7 +9,7 @@ export default function PhotosUploder({ addedPhotos, onChange }) {
         ev.preventDefault();
         try {
             const { data: filename } = await axios.post(
-                "http://localhost:4000/upload-by-link",
+                "https://airbnb-7n5y.onrender.com/upload-by-link",
                 { link: photoLink }
             );
             onChange((prev) => {
@@ -32,9 +32,13 @@ export default function PhotosUploder({ addedPhotos, onChange }) {
         }
 
         try {
-            const res = await axios.post("http://localhost:4000/upload", data, {
-                headers: { "Content-type": "multipart/form-data" },
-            });
+            const res = await axios.post(
+                "https://airbnb-7n5y.onrender.com/upload",
+                data,
+                {
+                    headers: { "Content-type": "multipart/form-data" },
+                }
+            );
             const { data: filenames } = res;
             onChange((prev) => {
                 return [...prev, ...filenames];
@@ -81,7 +85,7 @@ export default function PhotosUploder({ addedPhotos, onChange }) {
                         <div key={link} className="flex w-40 relative">
                             <img
                                 className="rounded-2xl h-auto w-full"
-                                src={`http://localhost:4000/uploads/${link}`}
+                                src={`https://airbnb-7n5y.onrender.com/uploads/${link}`}
                             />
                             <button
                                 className="absolute bottom-1 right-1 text-white bg-black p-2 rounded-xl bg-opacity-50 cursor-pointer"

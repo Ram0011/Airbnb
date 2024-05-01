@@ -10,12 +10,14 @@ export default function BookingPage() {
 
     useEffect(() => {
         if (id) {
-            axios.get(`http://localhost:4000/bookings`).then((response) => {
-                const foundBooking = response.data.find(
-                    ({ _id }) => _id === id
-                );
-                if (foundBooking) setBooking(foundBooking);
-            });
+            axios
+                .get(`https://airbnb-7n5y.onrender.com/bookings`)
+                .then((response) => {
+                    const foundBooking = response.data.find(
+                        ({ _id }) => _id === id
+                    );
+                    if (foundBooking) setBooking(foundBooking);
+                });
         }
     }, [id]);
 

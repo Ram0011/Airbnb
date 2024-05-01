@@ -40,7 +40,7 @@ export default function PlaceGallary({ place }) {
                                 <div key={photo}>
                                     <img
                                         className="rounded-lg"
-                                        src={`http://localhost:4000/uploads/${photo}`}
+                                        src={`https://airbnb-7n5y.onrender.com/uploads/${photo}`}
                                         alt="photo"
                                     />
                                 </div>
@@ -61,7 +61,7 @@ export default function PlaceGallary({ place }) {
                                 onClick={() => setShowAllPhotos(true)}
                                 className="rounded-xl aspect-square cursor-pointer "
                                 src={
-                                    "http://localhost:4000/uploads/" +
+                                    "https://airbnb-7n5y.onrender.com/uploads/" +
                                     place.photos[0]
                                 }
                                 alt="photo1"
@@ -75,7 +75,7 @@ export default function PlaceGallary({ place }) {
                             onClick={() => setShowAllPhotos(true)}
                             className=" aspect-square object-cover cursor-pointer"
                             src={
-                                "http://localhost:4000/uploads/" +
+                                "https://airbnb-7n5y.onrender.com/uploads/" +
                                 place.photos[1]
                             }
                             alt="photo2"
@@ -86,7 +86,7 @@ export default function PlaceGallary({ place }) {
                             onClick={() => setShowAllPhotos(true)}
                             className=" aspect-square object-cover cursor-pointer"
                             src={
-                                "http://localhost:4000/uploads/" +
+                                "https://airbnb-7n5y.onrender.com/uploads/" +
                                 place.photos[2]
                             }
                             alt="photo3"
