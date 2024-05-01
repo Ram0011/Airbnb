@@ -23,7 +23,7 @@ const jwtSecret = "thisisrandomstring";
 app.use(
     cors({
         credentials: true,
-        origin: "http://localhost:5173",
+        origin: "https://airbnb-7n5y.onrender.com",
     })
 );
 app.use("/uploads", express.static(__dirname + "/uploads"));
