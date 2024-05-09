@@ -24,8 +24,8 @@ app.use(
     cors({
         credentials: true,
         origin: [
-            "https://airbnb-eight-psi.vercel.app",
-            "https://fake-airbnb-by-ram.netlify.app",
+            "https://airbnb-two-ruddy.vercel.app",
+            "http://localhost:5173",
         ],
     })
 );
@@ -119,7 +119,7 @@ app.get("/profile", (req, res) => {
             res.json({ name, email, _id });
         });
     } else {
-        res.status(401).json({ message: "Unauthorized" });
+        res.json({ message: "Unauthorized" });
     }
 });
 
