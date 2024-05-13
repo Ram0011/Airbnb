@@ -255,6 +255,11 @@ app.put("/places", async (req, res) => {
 });
 
 app.post("/bookings", async (req, res) => {
+    const { token } = req.cookies;
+    if (!token) {
+        return res.json({ redirectTo: "/login" });
+    }
+
     const userData = await getUserDataFromReq(req);
     const { place, checkIn, checkOut, numberOfGuests, name, phone, price } =
         req.body;
