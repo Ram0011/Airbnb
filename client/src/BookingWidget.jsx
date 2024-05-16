@@ -72,6 +72,7 @@ export default function BookingWidget({ place }) {
         <div className="bg-white shadow p-4 rounded-2xl">
             <div className="text-center text-2xl ">
                 Price: ₹ {place.price} / night
+                <br /> Please login to book this place
             </div>
             <div className="border rounded-2xl mt-4">
                 <div className="flex">
