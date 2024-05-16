@@ -30,6 +30,10 @@ export default function BookingWidget({ place }) {
 
     async function bookThisPlace() {
         try {
+            if (!user) {
+                alert("Please login to book this place");
+                return;
+            }
             if (!checkIn || !checkOut) {
                 alert("Fill CheckIn and CheckOut Dates Correctly");
                 return;
@@ -52,6 +56,7 @@ export default function BookingWidget({ place }) {
                 "https://airbnb-7n5y.onrender.com/bookings",
                 data
             );
+            console.log(response.data);
             const bookingId = response.data._id;
             setRedirect(`/account/bookings/${bookingId}`);
         } catch (error) {

@@ -41,16 +41,6 @@ export default function PlacesFormPage() {
 
     async function savePlace(ev) {
         ev.preventDefault();
-        // if (
-        //     title.trim() === "" ||
-        //     address.trim() === "" ||
-        //     addedPhotos.length === 0 ||
-        //     description.trim() === ""
-        // ) {
-        //     // Display an error message or handle empty fields
-        //     alert("Please fill out all required fields.");
-        //     return; // Prevent further execution
-        // }
         const placeData = {
             title,
             address,
