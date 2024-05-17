@@ -287,9 +287,24 @@ app.post("/bookings", async (req, res) => {
 
 app.get("/bookings", async (req, res) => {
     const { token } = req.cookies;
+
+    if (!token) {
+        return res.status(401).json({ error: "Token is missing" });
+    }
+
     jwt.verify(token, jwtSecret, {}, async (err, userData) => {
-        if (err) throw err;
-        res.json(await Booking.find({ user: userData.id }).populate("place"));
+        if (err) {
+            return res.status(403).json({ error: "Invalid token" });
+        }
+
+        try {
+            const bookings = await Booking.find({ user: userData.id }).populate(
+                "place"
+            );
+            res.json(bookings);
+        } catch (error) {
+            res.status(500).json({ error: "Database query failed" });
+        }
     });
 });
 
