@@ -42,7 +42,7 @@ export default function Header() {
             </div>
 
             <Link
-                to={!user ? "/login" : "/account"}
+                to={user ? "/account" : "/login"}
                 className="flex border gap-2 border-gray-400 rounded-full items-center py-2 px-4 shadow-md overflow-hidden hover:text-gray-500 hover:shadow-xl"
             >
                 <svg

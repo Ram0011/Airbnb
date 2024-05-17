@@ -11,11 +11,17 @@ export function UserContextProvider({ children }) {
     useEffect(() => {
         const fun = async () => {
             if (!user) {
-                const { data } = await axios.get(
-                    "https://airbnb-7n5y.onrender.com/profile"
-                );
-                setUser(data);
-                setReady(true);
+                await axios
+                    .get("https://airbnb-7n5y.onrender.com/profile")
+                    .then(({ data }) => {
+                        // console.log(data.message);
+                        if (data.message === "Unauthorized") {
+                            setUser(null);
+                        } else {
+                            setUser(data);
+                        }
+                        setReady(true);
+                    });
             }
         };
         fun();
