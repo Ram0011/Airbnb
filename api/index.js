@@ -261,31 +261,35 @@ app.post("/bookings", async (req, res) => {
         return res.json({ redirectTo: "/login" });
     }
 
-    const userData = await getUserDataFromReq(req);
-    const { place, checkIn, checkOut, numberOfGuests, name, phone, price } =
-        req.body;
+    jwt.verify(token, jwtSecret, {}, async (err, userData) => {
+        if (err) throw err;
+        const { place, checkIn, checkOut, numberOfGuests, name, phone, price } =
+            req.body;
 
-    Booking.create({
-        place,
-        checkIn,
-        checkOut,
-        numberOfGuests,
-        name,
-        phone,
-        price,
-        user: userData.id,
-    })
-        .then((doc) => {
-            res.json(doc);
+        Booking.create({
+            place,
+            checkIn,
+            checkOut,
+            numberOfGuests,
+            name,
+            phone,
+            price,
+            user: userData.id,
         })
-        .catch((err) => {
-            res.json({ message: "Something went wrong", error: err });
-        });
+            .then((doc) => {
+                res.json(doc);
+            })
+            .catch((err) => {
+                res.json({ message: "Something went wrong", error: err });
+            });
+    });
 });
 
 app.get("/bookings", async (req, res) => {
-    const userData = await getUserDataFromReq(req);
-    res.json(await Booking.find({ user: userData.id }).populate("place"));
+    jwt.verify(token, jwtSecret, {}, async (err, userData) => {
+        if (err) throw err;
+        res.json(await Booking.find({ user: userData.id }).populate("place"));
+    });
 });
 
 //listen
