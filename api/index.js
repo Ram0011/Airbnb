@@ -41,16 +41,10 @@ mongoose
 
 //global functions
 function getUserDataFromReq(req) {
-    return new Promise((resolve, reject) => {
+    return Promise((resolve, reject) => {
         const { token } = req.cookies;
-        if (!token) {
-            return reject(new Error("Token not provided"));
-        }
-
         jwt.verify(token, jwtSecret, {}, async (err, userData) => {
-            if (err) {
-                return reject(new Error("Invalid token"));
-            }
+            if (err) throw err;
             resolve(userData);
         });
     });
