@@ -7,6 +7,11 @@ export default function PhotosUploder({ addedPhotos, onChange }) {
 
     async function addPhotoByLink(ev) {
         ev.preventDefault();
+        if (setPhotoLink === "" || photoLink === "") {
+            alert("Please provide a link");
+            return;
+        }
+
         try {
             const { data: filename } = await axios.post(
                 "https://airbnb-7n5y.onrender.com/upload-by-link",
