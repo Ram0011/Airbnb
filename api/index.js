@@ -286,6 +286,7 @@ app.post("/bookings", async (req, res) => {
 });
 
 app.get("/bookings", async (req, res) => {
+    const { token } = req.cookies;
     jwt.verify(token, jwtSecret, {}, async (err, userData) => {
         if (err) throw err;
         res.json(await Booking.find({ user: userData.id }).populate("place"));
