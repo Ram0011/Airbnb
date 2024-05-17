@@ -85,29 +85,29 @@ app.post("/login", async (req, res) => {
         return res.status(422).json({ error: "Please add all the fields" });
     }
 
-    const emailRes = await User.findOne({ email });
-    if (!emailRes) {
+    const userDoc = await User.findOne({ email });
+    if (!userDoc) {
         return res.status(422).json({ error: "Email not Registered!" });
     }
 
-    const userDoc = await User.findOne({ email });
-    if (userDoc) {
-        const passOk = bcrypt.compareSync(password, userDoc.password);
-        if (passOk) {
-            jwt.sign(
-                { email: userDoc.email, id: userDoc._id },
-                jwtSecret,
-                {},
-                (err, token) => {
-                    if (err) throw err;
-                    res.cookie("token", token).json(userDoc);
-                }
-            );
-        } else {
-            res.status(422).json({ error: "Invalid Password!" });
-        }
+    const passOk = bcrypt.compareSync(password, userDoc.password);
+    if (passOk) {
+        jwt.sign(
+            { email: userDoc.email, id: userDoc._id },
+            jwtSecret,
+            {},
+            (err, token) => {
+                if (err) throw err;
+                const isProduction = process.env.NODE_ENV === "production";
+                res.cookie("token", token, {
+                    httpOnly: true,
+                    secure: isProduction,
+                    sameSite: "None",
+                }).json(userDoc);
+            }
+        );
     } else {
-        res.json({ error: "not found" });
+        res.status(422).json({ error: "Invalid Password!" });
     }
 });
 
@@ -125,7 +125,11 @@ app.get("/profile", (req, res) => {
 });
 
 app.post("/logout", (req, res) => {
-    res.cookie("token", "").json({ message: "Logged out!" });
+    res.cookie("token", "", {
+        httpOnly: true,
+        secure: true,
+        sameSite: "None",
+    }).json({ message: "Logged out!" });
 });
 
 app.post("/upload-by-link", async (req, res) => {
