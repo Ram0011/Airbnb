@@ -32,7 +32,10 @@ function App() {
                         path="/account/places/:id"
                         element={<PlacesFormPage />}
                     />
-                    <Route path="/place/:id" element={<PlacePage />} />
+                    <Route
+                        path="https://airbnb-two-ruddy.vercel.app/place/:id"
+                        element={<PlacePage />}
+                    />
                     <Route
                         path="/account/bookings"
                         element={<BookingsPage />}
