@@ -18,7 +18,7 @@ export default function ProfilePage() {
         await axios.post("https://airbnb-7n5y.onrender.com/logout");
         alert("Logout Successful!");
         setRedirect("/");
-        // window.location.reload();
+        window.location.reload();
     }
 
     if (!user) {
