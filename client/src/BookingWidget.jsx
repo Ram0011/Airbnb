@@ -101,6 +101,8 @@ export default function BookingWidget({ place }) {
                         onChange={(ev) => setNumberOfGuests(ev.target.value)}
                     />
                 </div>
+                {checkIn > checkOut &&
+                    alert("CheckIn Date should be before CheckOut Date!")}
                 {numberOfNights > 0 && (
                     <div className=" py-4 px-4 border-t">
                         <label>Your Name </label>
