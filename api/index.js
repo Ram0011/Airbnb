@@ -26,6 +26,7 @@ app.use(
         origin: [
             "https://airbnb-two-ruddy.vercel.app",
             "http://localhost:5173",
+            "https://my-fake-airbnb.netlify.app",
         ],
     })
 );
